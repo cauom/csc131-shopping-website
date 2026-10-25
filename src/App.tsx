@@ -20,6 +20,7 @@ function App() {
   return (
     <main>
       <h1>My todos Kaisen</h1>
+      <h2>I like donuts</h2>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
