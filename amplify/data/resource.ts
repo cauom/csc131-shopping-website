@@ -12,6 +12,21 @@ const schema = a.schema({
       content: a.string(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
+
+  // CAUOM EDITS / WORK
+
+  // Start of Product model
+  Product: a
+    .model({
+      name: a.string().required(), // Every product must have a name thus .required()
+      description: a.string(),
+      category: a.string(),
+      price: a.float().required(), // Every product must have a price thus .required() 
+      stock: a.integer().required(), // Every product must have a stock thus .required() | Also stock CANNOT be a decimal
+    })
+    .authorization((allow) => [allow.publicApiKey()]),
+    
+    // CAUOM EDITS / WORK
 });
 
 export type Schema = ClientSchema<typeof schema>;
