@@ -1,6 +1,6 @@
 
 
-function Product(props: {image: string, name: string, price: number}){
+function Product(props: {image: string, name: string, price: number, category?: string | null, stock?: number}){
     return (
         <>
 
@@ -13,6 +13,8 @@ function Product(props: {image: string, name: string, price: number}){
                 <div id='Text'>
                     <h2>{props.name}</h2>
                     <h3>${props.price}</h3>
+                    <p>Category: {props.category}</p>
+                    <p>Stock: {props.stock}</p>
                 </div>
 
                 <div id="Button">
