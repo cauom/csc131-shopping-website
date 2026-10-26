@@ -6,7 +6,7 @@ A visitor will open the website and see a product list which is loaded from the 
 ## Architecture Diagram
 ![Architecture Diagram](docs/csc131-prototype-arch-dia.png)
 
-## Prototype Goal
+## Prototype Information and Goal
 The goal of this prototype is to show all three tiers of a system that work together given the architectural design.
 | Tier | Defined in this project prototype |
 |---|---|
