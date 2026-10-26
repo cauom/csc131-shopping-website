@@ -29,23 +29,7 @@ function App() {
 
   // Is the processing logic; It keeps only the products whose name contains the search text and ignores uppercase / lowercase
   const shown = products.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
-
-  // const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
-  // useEffect(() => {
-  //   client.models.Todo.observeQuery().subscribe({
-  //     next: (data) => setTodos([...data.items]),
-  //   });
-  // }, []);
-
-  // function createTodo() {
-  //   client.models.Todo.create({ content: window.prompt("Todo content") });
-  // }
-
-    
-  // function deleteTodo(id: string) {
-  //   client.models.Todo.delete({ id })
-  // }
+ 
 
 // CAUOM WORK / EDITS
 
@@ -65,21 +49,6 @@ function App() {
         {shown.length == 0 && <p>No products found.</p>}
       </div>
 
-      {/* <h1>My todos</h1>
-      <h2>I like pizza</h2>
-      <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li onClick={() => deleteTodo(todo.id)} key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/react/start/quickstart/#make-frontend-updates">
-          Review next step of this tutorial.
-        </a>
-      </div> */}
     </main>
   );
 }
