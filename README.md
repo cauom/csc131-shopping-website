@@ -1,25 +1,37 @@
-## AWS Amplify React+Vite Starter Template
+## CSC131 Shopping Website Prototype
+This is a prototype for our CSC131 group project at California State University, Sacramento. This is an online shopping website for a single retailer. This prototype covers two main features which is **searching products** and **displaying products**.
 
-This repository provides a starter template for creating applications using React+Vite and AWS Amplify, emphasizing easy setup for authentication, API, and database capabilities.
+A visitor will open the website and see a product list which is loaded from the cloud database and can narrow their options by typing in the search bar.
 
-## Overview
+## Architecture Diagram
+![Architecture Diagram](docs/csc131-prototype-arch-dia.png)
 
-This template equips you with a foundational React application integrated with AWS Amplify, streamlined for scalability and performance. It is ideal for developers looking to jumpstart their project with pre-configured AWS services like Cognito, AppSync, and DynamoDB.
+## Prototype Goal
+The goal of this prototype is to show all three tiers of a system that work together given the architectural design.
+| Tier | Defined in this project prototype |
+|---|---|
+| Frontend (User Interface) | React + Vite; the search bar and product listings |
+| Processing | The page's query, filter, and render logic using AWS Amplify |
+| Backend (Data) | Amazon DynamoDB table `Product` which is defined with AWS Amplify |
 
-## Features
+Likewise, the entire prototype app is deployed on AWS Amplify.
 
-- **Authentication**: Setup with Amazon Cognito for secure user authentication.
-- **API**: Ready-to-use GraphQL endpoint with AWS AppSync.
-- **Database**: Real-time database powered by Amazon DynamoDB.
+## How it works
 
-## Deploying to AWS
+```
+Start:
+Page opens -> Queries DB to get the Product List -> List is filtered -> Filtered list is rendered
 
-For detailed instructions on deploying your application, refer to the [deployment section](https://docs.amplify.aws/react/start/quickstart/#deploy-a-fullstack-app-to-aws) of our documentation.
+Search:
+Type text -> Filters the list that is already loaded on the page (This is not a DB query) -> re-render filtered list
+```
 
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
+## Development Tools
+- **React** for the framework and frontend development
+- **Vite** for the production builds
+- **AWS Amplify** for hosting and Data handling
+- **Amazon DynamoDB** for product storage
+- **GitHub** for the version control with branches and pull requests
+- **Lucid** to make and design the Architecture Diagram
+- **Figma** for the UI prototype design
+- **VSCode** as an IDE
