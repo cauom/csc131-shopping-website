@@ -26,6 +26,22 @@ Search:
 Type text -> Filters the list that is already loaded on the page (This is not a DB query) -> re-render filtered list
 ```
 
+## Frontend Tier
+- **src**:
+  - App.css
+  - App.tsx
+  - Product.css
+  - Product.tsx
+  - index.css
+  - main.tsx
+ 
+## Backend Tier
+- **amplify**
+  - **data**
+    - resource.ts
+  - backend.ts
+  - server.js
+
 ## Development Tools
 - **React** for the framework and frontend development
 - **Vite** for the production builds
