@@ -26,7 +26,7 @@ Search:
 Type text -> Filters the list that is already loaded on the page (This is not a DB query) -> re-render filtered list
 ```
 
-## Frontend Tier
+## UI Tier
 - **src**:
   - App.css
   - App.tsx
@@ -35,12 +35,18 @@ Type text -> Filters the list that is already loaded on the page (This is not a 
   - index.css
   - main.tsx
  
-## Backend Tier
+## Processing Tier
 - **amplify**
   - **data**
     - resource.ts
   - backend.ts
+
+## Database Tier
+- **database**
+  - **node_modules**
   - server.js
+  - package.json
+  - package-lock.json
 
 ## Development Tools
 - **React** for the framework and frontend development
@@ -51,3 +57,15 @@ Type text -> Filters the list that is already loaded on the page (This is not a 
 - **Lucid** to make and design the Architecture Diagram
 - **Figma** for the UI prototype design
 - **VSCode** as an IDE
+
+## Database Tools
+- **MySQL**: A relational database management system (RDBMS) for storing and processing data in a table of rows and columns
+- **MySQL Workbench**: A database IDE for writing SQL query codes to set up and manipulate the MySQL database and tables
+
+## Database and Cryptography Libraries
+- **mysql2**: This library in Node Package Manager provides accessibility that allows the JavaScript codes to connect to and query from a local MySQL database. Functions:
+  - createPool(databaseInfo): this function allows JavaScript to connect with a local database and manages multiple connections which allows several queries to run simultaneously  
+  - query(query): this function allows JavaScript to send a query directly to the database and returns a value in a JSON format
+- **bcrypt**: This library in Node Package Manager allows JavaScript to hash a password and compare plain text password with a stored hash password. Functions:
+  - hashSync(data, salt): this function hash the data parameter and returns a hash value as a string variable
+  - compareSync(data, encryptedData): this function compares data with encryptedData parameters and returns true if they match
