@@ -27,24 +27,23 @@ Type text -> Filters the list that is already loaded on the page (This is not a 
 ```
 
 ## UI Tier
-- **src**:
-  - App.css
-  - App.tsx
-  - Product.css
-  - Product.tsx
-  - index.css
-  - main.tsx
+- **src**: stores the files for running the frontend features
+  - App.css: this CSS file contains code for visual design in App.tsx 
+  - App.tsx: this TypeScript file is for developing the main page of the website
+  - Product.css: this CSS file contains code for describing the visual design of a product card in Product.tsx
+  - Product.tsx: this TypeScript file contains a template code for creating a a product card
+  - index.css: empty file filled with comments.
+  - main.tsx: This file is for importing all the necessary TypeScript and CSS files to deploy the UI
  
 ## Processing Tier
-- **amplify**
+- **amplify**: stores files for running the backend features
   - **data**
-    - resource.ts
+    - resource.ts: this file has the base code for creating a NoSQL schema
   - backend.ts
 
 ## Database Tier
 - **database**
-  - **node_modules**
-  - server.js
+  - server.js: this file contains the code for connecting to a local database and executing SQL queries
   - package.json
   - package-lock.json
 
@@ -56,13 +55,15 @@ Type text -> Filters the list that is already loaded on the page (This is not a 
 - **GitHub** for the version control with branches and pull requests
 - **Lucid** to make and design the Architecture Diagram
 - **Figma** for the UI prototype design
-- **VSCode** as an IDE
+- **Visual Studio Code** as an IDE and a code editor
+- **Node.js** as runtime environment for running a server in JavaScript
+- **NPM (Node Package Manager)** as a package manager for installing library tools to improve JavaScript code in web development
 
 ## Database Tools
 - **MySQL**: A relational database management system (RDBMS) for storing and processing data in a table of rows and columns
 - **MySQL Workbench**: A database IDE for writing SQL query codes to set up and manipulate the MySQL database and tables
 
-## Database and Cryptography Libraries
+## Database and Cryptography Libraries in NPM
 - **mysql2**: This library in Node Package Manager provides accessibility that allows the JavaScript codes to connect to and query from a local MySQL database. Functions:
   - createPool(databaseInfo): this function allows JavaScript to connect with a local database and manages multiple connections which allows several queries to run simultaneously  
   - query(query): this function allows JavaScript to send a query directly to the database and returns a value in a JSON format
