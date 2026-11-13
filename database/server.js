@@ -1,3 +1,4 @@
+// import libraries from npm for SQL connection and password encryption
 const sql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
 
@@ -12,16 +13,19 @@ const city = "Gotham";
 const state = "NJ";
 const postalCode = 32056;
 
+// user input email and password example when signing in
 const enteredEmail = "noobmaster69@gmail.com";
 const enteredPassword = "HulkSmash!";
 
 // This is a variable containing an array of the values corresponding to the fields
 const values = [userID, email, password, phoneNumber, street, city, state, postalCode];
 
+// database information
 const host = "localhost";
 const databaseUser = "root";
 const databasePassword = "Fryingpan7#yolo";
 const databaseName = "shop";
+
 // Create connection to a local database
 // createPool() allows the code to run multiple connections simultaneously
 const db = sql.createPool({
@@ -39,13 +43,20 @@ async function addUser(user) {
 }
 
 // This function verifies the user's email and password
-async function verifyUser(email, password) {
-    const [result] = await db.query(`SELECT email, password FROM user WHERE email = ${email}`);
+async function verifyUser(inputEmail, inputPassword) {
+    // The query returns an email and password
+    // result variable contains an object with email and password -> [{email: "", password: ""}]
+    const [result] = await db.query(`SELECT email, password FROM user WHERE email = ${inputEmail}`);
+    // Check if email exists or not
     if (result[0] == undefined) {
         console.log("Incorrect Email");
         return;
-    } else {
-        const isVerified = bcrypt.compareSync(password, result[0].password);
+    }
+    // Proceed to verify password if email is found
+    else {
+        // use bcrypt.compareSync() to compare password
+        const isVerified = bcrypt.compareSync(inputPassword, result[0].password);
+        // Confirm verification if password is correct
         if (isVerified) {
             console.log("Logged In");
         } else {
@@ -54,30 +65,38 @@ async function verifyUser(email, password) {
     }
 }
 
+// This function returns a table with the given name in a JSON format
 async function retrieve(tableName) {
     const [result] = await db.query(`SELECT * FROM ${tableName}`);
     console.log(result);
 }
 
-async function addToCart(product_id, quantity){}
-
+// This function updates the quantity of a product in the cart and in stock
 async function updateQuantity(cartItemID, changeInQuantity) {
 
+    // query returns a product_id and its quantity filtered by a given cart item ID
     const [cartItemResult] = await db.query(`SELECT product_id, quantity FROM cart_item WHERE cart_item_id = ${cartItemID}`);
 
+    // Stores values
     const productID = cartItemResult[0].product_id;
     const quantityInCart = cartItemResult[0].quantity;
+    // New quantity in cart is equals to the sum of current quantity in cart and change in quantity (can be negative if removed)
     const newQuantityInCart = quantityInCart + changeInQuantity;
 
-    // If the new amount of quantity in cart is less than or equal to zero, run a query to remove it from Table "cart_item"
+    // Check the amount of new quantity in cart before updating the amount
+    // If the new amount of quantity in cart is less than or equal to zero
+    // run a query to remove the row that contains that same cart item ID from Table "cart_item"
     if (newQuantityInCart <= 0){
         await db.query(`DELETE FROM cart_item WHERE cart_item_id = ${cartItemID}`);
-        return;
+    }
+    // else, update the cart item quantity in the cart
+    else {
+        await db.query("UPDATE cart_item SET quantity = ? WHERE cart_item_id = ?", [newQuantityInCart, cartItemID]);
     }
 
-    await db.query("UPDATE cart_item SET quantity = ? WHERE cart_item_id = ?", [newQuantityInCart, cartItemID]);
-
+    // Get the value of the stock from the table "product"
     const [productResult] = await db.query("SELECT stock FROM product WHERE product_id = ?", productID);
     const stock = productResult[0].stock;
+    // Update stock of a product
     await db.query("UPDATE product SET stock = ? WHERE product_id = ?", [stock - changeInQuantity, productID]);
 }
