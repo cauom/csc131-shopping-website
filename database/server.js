@@ -4,14 +4,14 @@ const bcrypt = require('bcrypt');
 
 // Variables containing the values of the fields
 const userID = 6;
-const email = "NotSuperman@gmail.com";
+const email = "yolo@gmail.com";
 // Use bcrypt.hashSynch(enteredPassword, saltRounds) to create a hash password
-const password = bcrypt.hashSync("Smooth", 2);
-const phoneNumber = "558-147-6731";
-const street = "221B Baker Street";
-const city = "Gotham";
-const state = "NJ";
-const postalCode = 32056;
+const password = bcrypt.hashSync("youonlylieonce", 4);
+const phoneNumber = "916-824-730";
+const street = "6000 J Street";
+const city = "New York City";
+const state = "NY";
+const postalCode = 46287;
 
 // user input email and password example when signing in
 const enteredEmail = "randomemail@gmail.com";
@@ -40,6 +40,7 @@ async function addUser(user) {
     // The 8 question marks are parameters for the query and each element
     // in "user" variable are passed as an argument in respective order
     await db.query(`INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?)`, user);
+    console.log("Account Created!");
 }
 
 // This function verifies the user's email and password
@@ -83,20 +84,27 @@ async function updateQuantity(cartItemID, changeInQuantity) {
     // New quantity in cart is equals to the sum of current quantity in cart and change in quantity (can be negative if removed)
     const newQuantityInCart = quantityInCart + changeInQuantity;
 
+    // Get the value of the stock from the table "product"
+    const [productResult] = await db.query("SELECT stock FROM product WHERE product_id = ?", productID);
+    const stock = productResult[0].stock;
+    
+    // Check if there is enough stock quantity
+    if (stock < changeInQuantity) {
+        console.error("Not enough stock available");
+        return; // end function if there is a stock shortage
+    }
     // Check the amount of new quantity in cart before updating the amount
     // If the new amount of quantity in cart is less than or equal to zero
     // run a query to remove the row that contains that same cart item ID from Table "cart_item"
-    if (newQuantityInCart <= 0){
+    else if (newQuantityInCart <= 0){
         await db.query(`DELETE FROM cart_item WHERE cart_item_id = ${cartItemID}`);
+        console.log(`Product with cart item ID ${cartItemID} has been removed from Cart Item table`)
     }
-    // else, update the cart item quantity in the cart
+    // else, update the cart item quantity in the cart and in stock
     else {
         await db.query("UPDATE cart_item SET quantity = ? WHERE cart_item_id = ?", [newQuantityInCart, cartItemID]);
     }
 
-    // Get the value of the stock from the table "product"
-    const [productResult] = await db.query("SELECT stock FROM product WHERE product_id = ?", productID);
-    const stock = productResult[0].stock;
     // Update stock of a product
     await db.query("UPDATE product SET stock = ? WHERE product_id = ?", [stock - changeInQuantity, productID]);
 }
