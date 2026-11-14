@@ -14,8 +14,8 @@ const state = "NJ";
 const postalCode = 32056;
 
 // user input email and password example when signing in
-const enteredEmail = "noobmaster69@gmail.com";
-const enteredPassword = "HulkSmash!";
+const enteredEmail = "randomemail@gmail.com";
+const enteredPassword = "HulkSmash";
 
 // This is a variable containing an array of the values corresponding to the fields
 const values = [userID, email, password, phoneNumber, street, city, state, postalCode];
@@ -46,7 +46,7 @@ async function addUser(user) {
 async function verifyUser(inputEmail, inputPassword) {
     // The query returns an email and password
     // result variable contains an object with email and password -> [{email: "", password: ""}]
-    const [result] = await db.query(`SELECT email, password FROM user WHERE email = ${inputEmail}`);
+    const [result] = await db.query(`SELECT email, password FROM user WHERE email = "${inputEmail}"`);
     // Check if email exists or not
     if (result[0] == undefined) {
         console.log("Incorrect Email");
