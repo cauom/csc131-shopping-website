@@ -26,7 +26,7 @@ Search:
 Type text -> Filters the list that is already loaded on the page (This is not a DB query) -> re-render filtered list
 ```
 
-## UI Tier
+## Presentation Tier
 - **src**: stores the files for running the frontend features
   - App.css: this CSS file contains code for visual design in App.tsx 
   - App.tsx: this TypeScript file is for developing the main page of the website
@@ -35,13 +35,13 @@ Type text -> Filters the list that is already loaded on the page (This is not a 
   - index.css: empty file filled with comments.
   - main.tsx: This file is for importing all the necessary TypeScript and CSS files to deploy the UI
  
-## Processing Tier
+## Logic Tier
 - **amplify**: stores files for running the backend features
   - **data**
     - resource.ts: this file has the base code for creating a NoSQL schema
   - backend.ts
 
-## Database Tier
+## Data Tier
 - **database**
   - server.js: this file contains the code for connecting to a local database and executing SQL queries
   - package.json
