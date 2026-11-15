@@ -70,3 +70,9 @@ Type text -> Filters the list that is already loaded on the page (This is not a 
 - **bcrypt**: This library in Node Package Manager allows JavaScript to hash a password and compare plain text password with a stored hash password. Functions:
   - hashSync(data, salt): this function hash the data parameter and returns a hash value as a string variable
   - compareSync(data, encryptedData): this function compares data with encryptedData parameters and returns true if they match
+
+## SQL Constraint Syntaxes
+- **PRIMARY KEY**: set a field in the table as a primary key and is automatically set as a unique key
+- **FOREIGN KEY**: set a field in the table as a foreign key
+- **UNIQUE**: set a field in the table as a unique key
+- **NOT NULL**: set a field in the table to prevent having an empty value
