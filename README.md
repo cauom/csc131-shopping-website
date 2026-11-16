@@ -40,12 +40,14 @@ Type text -> Filters the list that is already loaded on the page (This is not a 
   - **data**
     - resource.ts: this file has the base code for creating a NoSQL schema
   - backend.ts
-
-## Data Tier
-- **database**
-  - server.js: this file contains the code for connecting to a local database and executing SQL queries
+- **database**: stores files for running node.js server
+  - server.js: this file contains the prototype code for connecting to a local database and executing SQL queries
   - package.json
   - package-lock.json
+
+## Data Tier
+- **database**: this folder stores SQL file
+  - query.sql: this SQL file contains query code in running an SQL database
 
 ## Development Tools
 - **React** for the framework and frontend development
