@@ -47,7 +47,7 @@ Type text -> Filters the list that is already loaded on the page (This is not a 
 
 ## Data Tier
 - **database**: this folder stores SQL file
-  - query.sql: this SQL file contains query code in running an SQL database
+  - query.sql: this SQL file contains sample query code for running an SQL database
 
 ## Development Tools
 - **React** for the framework and frontend development
