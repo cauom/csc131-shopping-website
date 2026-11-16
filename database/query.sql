@@ -5,7 +5,7 @@ CREATE TABLE user (
     first_name VARCHAR(50) NOT NULL,  -- assign first_name as string data type with 50 characters maximum
     last_name VARCHAR(50) NOT NULL,   -- assign last_name as string data type with 50 characters maximum
     email VARCHAR(50) NOT NULL UNIQUE, -- assign email as string data type with 50 characters maximum
-    password VARCHAR(100) NOT NULL UNIQUE, -- assign password as string data type with 100 characters maximum
+    password VARCHAR(100) NOT NULL, -- assign password as string data type with 100 characters maximum
     phone_number VARCHAR(12) NOT NULL UNIQUE, -- assign phone_number as string data type with 12 characters maximum
     street VARCHAR(50) NOT NULL, -- assign street as string data type with 50 characters maximum
     city VARCHAR(50) NOT NULL, -- assign city as string data type with 50 characters maximum
