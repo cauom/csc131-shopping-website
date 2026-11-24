@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        "https://main.d1cn8qvc5511t6.amplifyapp.com/"
+        "https://main.d1cn8qvc5511t6.amplifyapp.com"
     ]
 }))
 
