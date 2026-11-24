@@ -12,13 +12,22 @@ import { generateClient } from "aws-amplify/data";
 
 // client is created which is an object that lets us communicate with the db
 // <Schema> allows us to read models such as Todo and Product which was created and tested before integrating it.
- const client = generateClient<Schema>();
+const client = generateClient<Schema>();
+
+interface User {
+  user_id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string; // Avoid sending passwords to the frontend in production
+}
 
 function App() {
   // Products loaded from db
   const [products, setProducts] = useState<Array<Schema["Product"]["type"]>>([]);
   // What the user types in the search bar
   const [search, setSearch] = useState("");
+  const [t, setTitle] = useState<User[]>([]);
   
   // Runs this when the page is opened and reads the Product table from the DynamoDB
   useEffect(() => {
@@ -30,6 +39,11 @@ function App() {
   // Is the processing logic; It keeps only the products whose name contains the search text and ignores uppercase / lowercase
   const shown = products.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
  
+  useEffect(() => {
+    fetch("http://localhost:3000/")
+    .then(response => response.json())
+    .then(data => setTitle(data))
+  })
 
 // CAUOM WORK / EDITS
 
@@ -37,7 +51,9 @@ function App() {
     <main>
 
       <div style={{display:'flex', justifyContent:'center'}}>
-        <h1 style={{width:"fit-content", padding:"10px", fontFamily:"consolas"}} >Shop Prototype</h1>
+        {t.map((x) => (
+          <h1 style={{width:"fit-content", padding:"10px", fontFamily:"consolas"}} >{x.first_name}</h1>
+        ))}
       </div>
 
       <div style={{display:'flex', justifyContent:'center'}}>

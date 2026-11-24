@@ -1,6 +1,17 @@
 // import libraries from npm for SQL connection and password encryption
 const sql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        "https://main.d1cn8qvc5511t6.amplifyapp.com/"
+    ]
+}))
 
 // Variables containing the values of the fields
 const userID = 1;
@@ -26,12 +37,20 @@ const databaseName = "shop";
 
 // Create connection to a local database
 // createPool() allows the code to run multiple connections simultaneously
+// const db = sql.createPool({
+//     host: host,
+//     user: databaseUser,
+//     password: databasePassword,
+//     database: databaseName
+// });
+
 const db = sql.createPool({
-    host: host,
-    user: databaseUser,
-    password: databasePassword,
-    database: databaseName
-});
+    host:"database-1.cpmyaqi484tz.us-east-2.rds.amazonaws.com",
+    user:"admin",
+    password:"Toastytito",
+    database:"shop",
+    port: 3306
+})
 
 // This function adds a user's credential into the table "User"
 async function addUser(user) {
@@ -106,3 +125,18 @@ async function updateQuantity(cartItemID, changeInQuantity) {
     // Update stock of a product
     await db.query("UPDATE product SET stock = ? WHERE product_id = ?", [stock - changeInQuantity, productID]);
 }
+
+async function select(){
+    const [result] = await db.query(`SELECT * FROM user`);
+    return result;
+}
+
+app.get('/', (req, res) => {
+    select().then(data => {
+        res.json(data);
+    })
+})
+
+app.listen(3000, () => {
+    console.log("Listening")
+})
