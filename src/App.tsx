@@ -40,7 +40,7 @@ function App() {
   const shown = products.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
  
   useEffect(() => {
-    fetch("https://csc131-shopping-website-production.up.railway.app/")
+    fetch("http://localhost:3000/")
     .then(response => response.json())
     .then(data => setTitle(data))
   })
@@ -52,9 +52,7 @@ function App() {
 
       <div style={{display:'flex', justifyContent:'center'}}>
         {t.map((x) => (
-          <h1 style={{width:"fit-content", padding:"10px", fontFamily:"consolas"}} >
-            {x.last_name}, {x.first_name} {x.first_name}
-            </h1>
+          <h1 style={{width:"fit-content", padding:"10px", fontFamily:"consolas"}} >{x.password}</h1>
         ))}
       </div>
 
