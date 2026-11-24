@@ -6,6 +6,9 @@ const cors = require('cors');
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
+
 app.use(cors({
     origin: [
         "http://localhost:5173",
@@ -137,6 +140,15 @@ app.get('/', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log("Listening")
-})
+// // Catch-all route for handling 404 errors
+// app.use((req, res, next) => {
+//     res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
+// });
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running at http://localhost:${PORT}/`);
+});
+
+// app.listen(3000, () => {
+//     console.log("Listening")
+// })
