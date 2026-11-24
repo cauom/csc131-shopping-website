@@ -16,6 +16,8 @@ app.use(cors({
     ]
 }))
 
+app.use(express.json())
+
 // Variables containing the values of the fields
 const userID = 1;
 const firstName = "Bob";
@@ -145,7 +147,7 @@ app.get('/', (req, res) => {
 //     res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 // });
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);
 });
 
