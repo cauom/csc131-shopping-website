@@ -14,20 +14,20 @@ import { generateClient } from "aws-amplify/data";
 // <Schema> allows us to read models such as Todo and Product which was created and tested before integrating it.
 const client = generateClient<Schema>();
 
-// interface User {
-//   user_id: number;
-//   first_name: string;
-//   last_name: string;
-//   email: string;
-//   password: string; // Avoid sending passwords to the frontend in production
-// }
+interface User {
+  user_id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string; // Avoid sending passwords to the frontend in production
+}
 
 function App() {
   // Products loaded from db
   const [products, setProducts] = useState<Array<Schema["Product"]["type"]>>([]);
   // What the user types in the search bar
   const [search, setSearch] = useState("");
-  // const [t, setTitle] = useState<User[]>([]);
+  const [t, setTitle] = useState<User[]>([]);
   
   // Runs this when the page is opened and reads the Product table from the DynamoDB
   useEffect(() => {
@@ -39,22 +39,22 @@ function App() {
   // Is the processing logic; It keeps only the products whose name contains the search text and ignores uppercase / lowercase
   const shown = products.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
  
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/")
-  //   .then(response => response.json())
-  //   .then(data => setTitle(data))
-  // })
+  useEffect(() => {
+    fetch("http://localhost:3000/")
+    .then(response => response.json())
+    .then(data => setTitle(data))
+  })
 
 // CAUOM WORK / EDITS
 
   return (
     <main>
 
-      {/* <div style={{display:'flex', justifyContent:'center'}}>
+      <div style={{display:'flex', justifyContent:'center'}}>
         {t.map((x) => (
           <h1 style={{width:"fit-content", padding:"10px", fontFamily:"consolas"}} >{x.password}</h1>
         ))}
-      </div> */}
+      </div>
       <div style={{display:'flex', justifyContent:'center'}}>
         <h1 style={{width:"fit-content", padding:"10px", fontFamily:"consolas"}} >Shopping Website</h1>
       </div>
