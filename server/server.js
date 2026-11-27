@@ -143,15 +143,8 @@ app.get('/', (req, res) => {
     })
 })
 
-app.get('/login', (req, res) => {
-    select().then(data => {
-        res.json(data[0]);
-    })
-})
-
 app.post('/', (req, res) => {
-    const {email} = req.params;
-    console.log(email)
+    const {email} = req.body;
     res.json(email)
 })
 
