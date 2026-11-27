@@ -146,7 +146,7 @@ app.post('/login', (req, res) => {
     const {email, password} = req.body;
     verifyUser(email, password)
     .then(data => {
-        res.json(data)
+        res.json({isVerified: data})
     })
 })
 

@@ -17,7 +17,7 @@ export default function Login() {
 
                     axios.post("https://csc131-shopping-website-production.up.railway.app/login", {email, password})
                     .then(response => 
-                        console.log(response)
+                        console.log(response.data)
                     )
                     .catch(err => console.error(err))
                 }} action="#" method="post">
