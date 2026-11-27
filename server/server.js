@@ -82,9 +82,9 @@ async function verifyUser(inputEmail, inputPassword) {
         const isVerified = bcrypt.compareSync(inputPassword, result[0].password);
         // Confirm verification if password is correct
         if (isVerified) {
-            console.log("Logged In");
+            return "Logged In";
         } else {
-            console.log("Incorrect Password");
+            return ("Incorrect Password");
         }
     }
 }
