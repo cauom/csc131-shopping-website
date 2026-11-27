@@ -143,9 +143,12 @@ app.get('/', (req, res) => {
     })
 })
 
-app.post('/', (req, res) => {
-    const {email} = req.body;
-    res.json(email)
+app.post('/login', (req, res) => {
+    const {email, password} = req.body;
+    verifyUser(email, password)
+    .then(data => {
+        res.json({message: data})
+    })
 })
 
 // // Catch-all route for handling 404 errors

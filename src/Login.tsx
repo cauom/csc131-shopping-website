@@ -9,7 +9,18 @@ export default function Login() {
         <section className="page-card">
             <h1>Welcome back</h1>
             <p>Log in to your account.</p>
-            <form className="login-form" action="#" method="post">
+            <form className="login-form" onSubmit={(e) => {
+                    e.preventDefault();
+                    
+                    const email = (document.getElementById("email") as HTMLInputElement)?.value
+                    const password = (document.getElementById("password") as HTMLInputElement)?.value
+
+                    axios.post("https://csc131-shopping-website-production.up.railway.app", {email, password})
+                    .then(response => 
+                        console.log(response.data)
+                    )
+                    .catch(err => console.error(err))
+                }} action="#" method="post">
                 <div className="form-field">
                     <label htmlFor="email">Email address</label>
                     <input type="email" id="email" name="email" autoComplete="email" required/>
@@ -18,18 +29,7 @@ export default function Login() {
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password" name="password" autoComplete="current-password" required />
                 </div>
-                <button type="submit" onClick={(e) => {
-                    e.preventDefault();
-                    
-                    const email = (document.getElementById("email") as HTMLInputElement)?.value
-                    // const password = (document.getElementById("password") as HTMLInputElement)?.value
-
-                    axios.post("https://csc131-shopping-website-production.up.railway.app", {email})
-                    .then(response => 
-                        console.log(response.data[0])
-                    )
-                    .catch(err => console.error(err))
-                }}>Log in</button>
+                <button type="submit">Log in</button>
             </form>
         </section>
     </div>
