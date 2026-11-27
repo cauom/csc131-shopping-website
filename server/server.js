@@ -73,8 +73,7 @@ async function verifyUser(inputEmail, inputPassword) {
     const [result] = await db.query(`SELECT email, password FROM user WHERE email = "${inputEmail}"`);
     // Check if email exists or not
     if (result[0] == undefined) {
-        console.log("Incorrect Email");
-        return;
+        return false;
     }
     // Proceed to verify password if email is found
     else {
@@ -82,9 +81,9 @@ async function verifyUser(inputEmail, inputPassword) {
         const isVerified = bcrypt.compareSync(inputPassword, result[0].password);
         // Confirm verification if password is correct
         if (isVerified) {
-            return "Logged In";
+            return true;
         } else {
-            return ("Incorrect Password");
+            return false;
         }
     }
 }
@@ -147,7 +146,7 @@ app.post('/login', (req, res) => {
     const {email, password} = req.body;
     verifyUser(email, password)
     .then(data => {
-        res.json(data)
+        res.json({data})
     })
 })
 
