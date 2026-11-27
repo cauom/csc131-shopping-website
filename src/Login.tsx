@@ -15,9 +15,9 @@ export default function Login() {
                     const email = (document.getElementById("email") as HTMLInputElement)?.value
                     const password = (document.getElementById("password") as HTMLInputElement)?.value
 
-                    axios.post("https://csc131-shopping-website-production.up.railway.app", {email, password})
+                    axios.post("https://csc131-shopping-website-production.up.railway.app/login", {email, password})
                     .then(response => 
-                        console.log(response.data)
+                        console.log(response)
                     )
                     .catch(err => console.error(err))
                 }} action="#" method="post">
