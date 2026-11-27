@@ -1,0 +1,79 @@
+.page-main {
+    display: flex; /* Enables flexbox layout for the card. */
+    justify-content: center; /* Centers the card horizontally. */
+    padding: 48px 20px; /* Adds vertical and horizontal spacing. */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.page-card {
+    box-sizing: border-box; /* Includes padding and border within the set width. */
+    width: 100%; /* Lets the card use available space on narrow screens. */
+    max-width: 520px; /* Prevents the card from becoming too wide to read. */
+    padding: 32px; /* Adds space inside the card. */
+    border: 1px solid #e5e7eb; /* Adds a thin light gray border. */
+    border-radius: 12px; /* Rounds the card's corners. */
+    background-color: #ffffff; /* Sets the card background to white. */
+    box-shadow: 0 8px 24px rgba(31, 41, 55, 0.08); /* Adds a subtle shadow. */
+}
+
+/* Adjusts page heading spacing and size. */
+.page-card h1 {
+    margin: 0 0 8px; /* Removes other margins and adds 8 pixels below. */
+    font-size: 1.75rem; /* Sets the heading size relative to the root font size. */
+}
+
+/* Adds space below introductory text and colors it gray. */
+.page-card p {
+    margin: 0 0 24px; /* Removes other margins and adds 24 pixels below. */
+    color: #6b7280; /* Sets the paragraph text to gray. */
+}
+
+/* Stacks the form controls vertically with consistent spacing. */
+.login-form {
+    display: grid; /* Uses grid layout to stack the form's direct children. */
+    gap: 18px; /* Adds space between the fields and button. */
+}
+
+/* Stacks each field's label and input with a small gap. */
+.form-field {
+    display: grid; /* Places the label and input in a vertical grid. */
+    gap: 7px; /* Adds space between the label and input. */
+}
+
+/* Makes field labels semibold for emphasis. */
+.form-field label {
+    font-weight: 600; /* Sets a semibold font weight. */
+}
+
+/* Sets the input's width, spacing, border, corners, and inherited font. */
+.form-field input {
+    box-sizing: border-box; /* Includes padding and border within the set width. */
+    width: 100%; /* Fills the available width of the field. */
+    padding: 11px 12px; /* Adds inner space around the typed text. */
+    border: 1px solid #cbd5e1; /* Adds a thin light gray border. */
+    border-radius: 6px; /* Rounds the input corners. */
+    font: inherit; /* Uses the surrounding text's font settings. */
+}
+
+/* Makes a focused input easier to identify when typing or navigating by keyboard. */
+.form-field input:focus {
+    border-color: #2563eb; /* Changes the border to blue. */
+    outline: 2px solid rgba(37, 99, 235, 0.2); /* Adds a faint blue focus ring. */
+}
+
+/* Styles the login button and indicates that it can be clicked. */
+.login-form button {
+    padding: 12px; /* Adds space inside the button. */
+    border: 0; /* Removes the browser's default button border. */
+    border-radius: 6px; /* Rounds the button corners. */
+    background-color: #2563eb; /* Sets the button background to blue. */
+    color: #ffffff; /* Sets the button text to white. */
+    font: inherit; /* Uses the surrounding text's font settings. */
+    font-weight: 600; /* Makes the button text semibold. */
+    cursor: pointer; /* Shows a pointer cursor when hovering over the button. */
+}
+
+/* Darkens the button when the pointer is over it. */
+.login-form button:hover {
+    background-color: #1d4ed8; /* Changes the button to a darker blue. */
+}

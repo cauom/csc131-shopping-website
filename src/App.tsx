@@ -14,20 +14,11 @@ import { generateClient } from "aws-amplify/data";
 // <Schema> allows us to read models such as Todo and Product which was created and tested before integrating it.
 const client = generateClient<Schema>();
 
-interface User {
-  user_id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  password: string; // Avoid sending passwords to the frontend in production
-}
-
 function App() {
   // Products loaded from db
   const [products, setProducts] = useState<Array<Schema["Product"]["type"]>>([]);
   // What the user types in the search bar
   const [search, setSearch] = useState("");
-  const [t, setTitle] = useState<User[]>([]);
   
   // Runs this when the page is opened and reads the Product table from the DynamoDB
   useEffect(() => {
@@ -38,31 +29,38 @@ function App() {
 
   // Is the processing logic; It keeps only the products whose name contains the search text and ignores uppercase / lowercase
   const shown = products.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
- 
-  useEffect(() => {
-    fetch("https://csc131-shopping-website-production.up.railway.app/")
-    .then(response => response.json())
-    .then(data => setTitle(data))
-  })
+
+  // useEffect(() => {
+  //   fetch("https://csc131-shopping-website-production.up.railway.app/")
+  //   .then(response => response.json())
+  //   .then(data => setTitle(data))
+  // })
 
 // CAUOM WORK / EDITS
 
   return (
     <main>
 
-      <div style={{display:'flex', justifyContent:'center'}}>
-        {t.map((x) => (
-          <h1 style={{width:"fit-content", padding:"10px", fontFamily:"consolas"}} >
-            <ol>
-              <li>{x.email}</li>
-              <li>{x.first_name}</li>
-              <li>{x.last_name}</li>
-            </ol>
-          </h1>
-        ))}
+      <div id="filter-menu">
+        <form action="">
+          <label htmlFor="">Price Range (1-9000)</label><br />
+          <label htmlFor="">$ </label>
+          <input type="number" name="" id="" min={1} max={9000}/><br />
+          <label htmlFor="">Category</label><br />
+          <select name="" id="">
+            <option value=""></option>
+            <option value="Clothing">Clothing</option>
+            <option value="Footwear">Footwear</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Food">Food</option>
+            <option value="Books">Books</option>
+          </select>
+        </form>
       </div>
+
       <div style={{display:'flex', justifyContent:'center'}}>
-        <h1 style={{width:"fit-content", padding:"10px", fontFamily:"consolas"}} >Shopping Website</h1>
+        <h1 style={{width:"fit-content", paddingTop:"0px", fontFamily:"Arial"}} >Shopping Website</h1>
       </div>
 
       <div style={{display:'flex', justifyContent:'center'}}>
