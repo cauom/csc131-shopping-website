@@ -150,7 +150,7 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    const {email, password} = req.params;
+    const {email} = req.params;
     console.log(email)
 })
 
