@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({
     origin: [
         "http://localhost:5173",
+        "http://localhost:5173/login",
         "https://main.d1cn8qvc5511t6.amplifyapp.com"
     ]
 }))
@@ -140,6 +141,17 @@ app.get('/', (req, res) => {
     select().then(data => {
         res.json(data);
     })
+})
+
+app.get('/login', (req, res) => {
+    select().then(data => {
+        res.json(data);
+    })
+})
+
+app.post('/', (req, res) => {
+    const {email, password} = req.params;
+    console.log(email)
 })
 
 // // Catch-all route for handling 404 errors

@@ -8,4 +8,8 @@ body {
   margin-top: 20px;
   font-family:'Helvetica Neue';
   font-size: large;
+  background-color: white;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
 }
