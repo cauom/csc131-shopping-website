@@ -152,6 +152,7 @@ app.get('/login', (req, res) => {
 app.post('/', (req, res) => {
     const {email} = req.params;
     console.log(email)
+    res.json(email)
 })
 
 // // Catch-all route for handling 404 errors
