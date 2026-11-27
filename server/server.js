@@ -70,7 +70,7 @@ async function addUser(user) {
 async function verifyUser(inputEmail, inputPassword) {
     // The query returns an email and password
     // result variable contains an object with email and password -> [{email: "", password: ""}]
-    const [result] = await db.query(`SELECT email, password FROM user WHERE email = "${inputEmail}"`);
+    const [result] = await db.query(`SELECT email, password FROM account WHERE email = "${inputEmail}"`);
     // Check if email exists or not
     if (result[0] == undefined) {
         return false;
@@ -158,7 +158,3 @@ app.post('/login', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);
 });
-
-// app.listen(3000, () => {
-//     console.log("Listening")
-// })
