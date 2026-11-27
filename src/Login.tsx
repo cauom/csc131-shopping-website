@@ -22,14 +22,12 @@ export default function Login() {
                     e.preventDefault();
                     
                     const email = (document.getElementById("email") as HTMLInputElement)?.value
-                    const password = (document.getElementById("password") as HTMLInputElement)?.value
-                    console.log(email)
-                    console.log(password)
+                    // const password = (document.getElementById("password") as HTMLInputElement)?.value
 
-                    axios.post("https://csc131-shopping-website-production.up.railway.app/login",
-                        {email, password}
+                    axios.post("https://csc131-shopping-website-production.up.railway.app", {email})
+                    .then(response => 
+                        console.log(response.data[0])
                     )
-                    .then(data => console.log(data))
                     .catch(err => console.error(err))
                 }}>Log in</button>
             </form>
