@@ -145,7 +145,7 @@ app.get('/', (req, res) => {
 
 app.get('/login', (req, res) => {
     select().then(data => {
-        res.json(data);
+        res.json(data[0]);
     })
 })
 
