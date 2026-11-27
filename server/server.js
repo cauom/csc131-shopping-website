@@ -25,7 +25,7 @@ const firstName = "Bob";
 const lastName = "Bush";
 const email = "bob@gmail.com";
 // Use bcrypt.hashSynch(enteredPassword, saltRounds) to create a hash password
-const password = bcrypt.hashSync("Ilikeburger123", 0);
+const password = bcrypt.hashSync("yolo", 0);
 const phoneNumber = "530-123-7543";
 const street = "1234 Oakland";
 const city = "Sacramento";
@@ -34,7 +34,7 @@ const postalCode = 92387;
 
 // This is a variable containing an array of the values corresponding to the fields
 const values = [userID, firstName, lastName, email, password, phoneNumber, street, city, state, postalCode];
-
+const account = ["toasty@gmail.com", password]
 // database information
 const host = "localhost";
 const databaseUser = "root";
@@ -62,7 +62,7 @@ const db = sql.createPool({
 async function addUser(user) {
     // The 8 question marks are parameters for the query and each element
     // in "user" variable are passed as an argument in respective order
-    await db.query(`INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, user);
+    await db.query(`INSERT INTO account VALUES (?, ?)`, user);
     console.log("Account Created!");
 }
 
@@ -147,7 +147,7 @@ app.post('/login', (req, res) => {
     const {email, password} = req.body;
     verifyUser(email, password)
     .then(data => {
-        res.json({message: data})
+        res.json(data)
     })
 })
 
