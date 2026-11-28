@@ -70,7 +70,7 @@ function App() {
       </div>
 
       <div style={{display:'flex', justifyContent:'center'}}>
-        <h1 style={{width:"fit-content", paddingTop:"0px", fontFamily:"Arial"}} >Shopping Website</h1>
+        <h1 style={{width:"fit-content", paddingTop:"0px", fontFamily:"Arial"}} >Shop Website</h1>
       </div>
 
       <div style={{display:'flex', justifyContent:'center'}}>
