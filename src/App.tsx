@@ -19,8 +19,8 @@ function App() {
   const [products, setProducts] = useState<Array<Schema["Product"]["type"]>>([]);
   // What the user types in the search bar
   const [search, setSearch] = useState("");
-  const [price, setPrice] = useState(900);
-  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState<number>(900);
+  // const [category, setCategory] = useState("");
   
   // Runs this when the page is opened and reads the Product table from the DynamoDB
   useEffect(() => {
@@ -50,12 +50,14 @@ function App() {
           <label htmlFor="">Price Range (1-9000)</label><br />
           <label htmlFor="">$ </label>
           
-          <input type="number" name="" id="" min={1} max={9000} onChange={(e) => setPrice(Number(e.target.value))}/><br />
+          <input type="number" name="" id="" defaultValue={price} min={1} max={9000} onChange={(e) => {
+            setPrice(Number(e.target.value))
+            }}/><br />
 
 
           <label htmlFor="">Category</label><br />
           {/* Category Options */}
-          <select name="" id="" onChange={(e) => setCategory((e.target.value))}>
+          <select name="" id="">
             <option value="All">All</option>
             <option value="Clothing">Clothing</option>
             <option value="Footwear">Footwear</option>
