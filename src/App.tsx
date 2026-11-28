@@ -56,7 +56,7 @@ function App() {
           <label htmlFor="">Category</label><br />
           {/* Category Options */}
           <select name="" id="" onChange={(e) => setCategory((e.target.value))}>
-            <option value="All"></option>
+            <option value="All">All</option>
             <option value="Clothing">Clothing</option>
             <option value="Footwear">Footwear</option>
             <option value="Electronics">Electronics</option>
