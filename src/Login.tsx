@@ -1,8 +1,12 @@
 import "./Login.css"
 import axios from 'axios'
+// import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function Login() {
 
+    const navigate = useNavigate();
+    
     return (
     <>
     <div className="page-main">
@@ -16,9 +20,10 @@ export default function Login() {
                     const password = (document.getElementById("password") as HTMLInputElement)?.value
 
                     axios.post("https://csc131-shopping-website-production.up.railway.app/login", {email, password})
-                    .then(response => 
-                        console.log(response.data)
-                    )
+                    .then(response => {
+                        console.log(response.data.isVerified)
+                        navigate('/');
+                    })
                     .catch(err => console.error(err))
                 }} action="#" method="post">
                 <div className="form-field">
