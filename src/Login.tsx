@@ -22,7 +22,11 @@ export default function Login() {
                     axios.post("https://csc131-shopping-website-production.up.railway.app/login", {email, password})
                     .then(response => {
                         console.log(response.data.isVerified)
-                        navigate('/');
+                        if (response.data.isVerified == true) {
+                            navigate('/');
+                        } else {
+                            alert("error")
+                        }
                     })
                     .catch(err => console.error(err))
                 }} action="#" method="post">
