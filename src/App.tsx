@@ -19,7 +19,7 @@ function App() {
   const [products, setProducts] = useState<Array<Schema["Product"]["type"]>>([]);
   // What the user types in the search bar
   const [search, setSearch] = useState("");
-  const [price, setPrice] = useState(9000);
+  const [price, setPrice] = useState(900);
   const [category, setCategory] = useState("");
   
   // Runs this when the page is opened and reads the Product table from the DynamoDB
@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   // Is the processing logic; It keeps only the products whose name contains the search text and ignores uppercase / lowercase
-  const shown = products.filter((p) => (p.name.toLowerCase().includes(search.toLowerCase()) && p.price <= price && p.category == category));
+  const shown = products.filter((p) => (p.name.toLowerCase().includes(search.toLowerCase()) && Number(p.price) <= Number(price)));
 
   // useEffect(() => {
   //   fetch("https://csc131-shopping-website-production.up.railway.app/")
