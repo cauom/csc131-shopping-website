@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   // Is the processing logic; It keeps only the products whose name contains the search text and ignores uppercase / lowercase
-  const shown = products.filter((p) => (p.name.toLowerCase().includes(search.toLowerCase()) && Number(p.price) <= Number(price) && p.category?.includes(category)));
+  const shown = products.filter((p) => (p.name.toLowerCase().startsWith(search.toLowerCase()) && Number(p.price) <= Number(price) && p.category?.includes(category)));
 
   // useEffect(() => {
   //   fetch("https://csc131-shopping-website-production.up.railway.app/")
