@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import heroImg from './assets/hero.png'
 import './App.css'
 import './Product.css'

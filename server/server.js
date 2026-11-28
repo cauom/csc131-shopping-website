@@ -14,6 +14,7 @@ app.use(cors({
         // "http://localhost:5173",
         // "http://localhost:5173/login",
         "https://main.d1cn8qvc5511t6.amplifyapp.com",
+        "https://main.d1cn8qvc5511t6.amplifyapp.com/",
         "https://main.d1cn8qvc5511t6.amplifyapp.com/login"
     ]
 }))
