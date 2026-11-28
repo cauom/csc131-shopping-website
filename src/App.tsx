@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import heroImg from './assets/hero.png'
 import './App.css'
 import './Product.css'
@@ -19,6 +19,8 @@ function App() {
   const [products, setProducts] = useState<Array<Schema["Product"]["type"]>>([]);
   // What the user types in the search bar
   const [search, setSearch] = useState("");
+  const [price, setPrice] = useState(9000);
+  const [category, setCategory] = useState("");
   
   // Runs this when the page is opened and reads the Product table from the DynamoDB
   useEffect(() => {
@@ -28,7 +30,9 @@ function App() {
   }, []);
 
   // Is the processing logic; It keeps only the products whose name contains the search text and ignores uppercase / lowercase
-  const shown = products.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
+  const shown = products.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()) 
+  && p.price <= price 
+  && p.category == category);
 
   // useEffect(() => {
   //   fetch("https://csc131-shopping-website-production.up.railway.app/")
@@ -41,14 +45,20 @@ function App() {
   return (
     <main>
 
+      {/* Filter Menu */}
       <div id="filter-menu">
         <form action="">
+          {/* Price Range Input */}
           <label htmlFor="">Price Range (1-9000)</label><br />
           <label htmlFor="">$ </label>
-          <input type="number" name="" id="" min={1} max={9000}/><br />
+          
+          <input type="number" name="" id="" min={1} max={9000} onChange={(e) => setPrice(Number(e.target.value))}/><br />
+
+
           <label htmlFor="">Category</label><br />
-          <select name="" id="">
-            <option value=""></option>
+          {/* Category Options */}
+          <select name="" id="" onChange={(e) => setCategory((e.target.value))}>
+            <option value="All"></option>
             <option value="Clothing">Clothing</option>
             <option value="Footwear">Footwear</option>
             <option value="Electronics">Electronics</option>
