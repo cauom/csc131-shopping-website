@@ -19,7 +19,7 @@ function App() {
   const [products, setProducts] = useState<Array<Schema["Product"]["type"]>>([]);
   // What the user types in the search bar
   const [search, setSearch] = useState("");
-  const [price, setPrice] = useState<number>(900);
+  const [price, setPrice] = useState<number>(9000);
   const [category, setCategory] = useState("");
   
   // Runs this when the page is opened and reads the Product table from the DynamoDB
@@ -70,7 +70,7 @@ function App() {
       </div>
 
       <div style={{display:'flex', justifyContent:'center'}}>
-        <h1 style={{width:"fit-content", paddingTop:"0px", fontFamily:"Arial"}} >Shop Website</h1>
+        <h1 style={{width:"fit-content", paddingTop:"0px", fontFamily:"Arial"}} >Shopping Website</h1>
       </div>
 
       <div style={{display:'flex', justifyContent:'center'}}>
